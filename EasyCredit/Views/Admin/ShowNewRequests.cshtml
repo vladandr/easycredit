@@ -1,0 +1,10 @@
+﻿
+@model IEnumerable<EasyCredit.Models.Request>
+
+@{
+    ViewBag.Title = "ShowNewRequests";
+}
+
+<h2>ShowNewRequests</h2>
+
+@{Html.RenderPartial("ShowRequests", Model);}

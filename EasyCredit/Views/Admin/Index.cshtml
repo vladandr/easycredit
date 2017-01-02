@@ -1,0 +1,57 @@
+﻿@using EasyCredit.Models.Identity
+@model List<ApplicationUser>
+@{
+    ViewBag.Title = "Administration";
+}
+<h2>Show all users</h2>
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<div class="container">
+    <hr />
+    <div class="row" id="userList">
+        <table class="table-striped ">
+            <thead>
+                <tr>
+                    <th class="col-xs-2">Username</th>
+                    <th class="col-xs-3">Email</th>
+                    <th class="col-xs-2">Gender</th>
+                    <th class="col-xs-3"></th>
+                    <th class="col-xs-2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var user in Model)
+                    {
+                        <tr>                            
+                            <td class="col-xs-2 cap">@user.UserName </td>
+                            <td class="col-xs-2 cap">@user.Email</td>
+                            <td class="col-xs-2 strong">@user.Gender</td>
+                            @{                                
+                                if (@user.LockoutEndDateUtc != null)
+                                {
+                                    <td class="col-xs-1">
+                                        <a class="btn btn-success" href="/admin/unban/@user.UserName">Unban</a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="col-xs-1">
+                                        <a class="btn btn-danger" href="/admin/ban/@user.UserName">Ban</a>
+                                    </td>
+                                }
+
+                                <td class="col-xs-1">
+                                    <a class="btn btn-default" href="/admin/resetpassword/@user.UserName">ResetPassword</a>
+                                </td>
+                            }
+
+                        </tr>
+                     }
+                }
+            </tbody>
+        </table>
+    </div><!--/row-->
+    <div class="row">
+        <hr>
+    </div>
+</div><!--/container-->

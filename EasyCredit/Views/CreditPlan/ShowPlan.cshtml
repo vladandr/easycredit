@@ -1,0 +1,98 @@
+﻿@model EasyCredit.Models.CreditPlan
+
+@{
+    ViewBag.Title = "ShowPlan";
+}
+
+<h2>ShowPlan</h2>
+
+<div>
+    <h4>CreditPlan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameOfPlan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameOfPlan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinValueToCredit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinValueToCredit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxValueToCredit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxValueToCredit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LimitDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LimitDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surcharge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surcharge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Percentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Percentage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<li>
+    <p class="navbar-btn">
+        @Html.ActionLink("Delete Credit Plan", "DeleteCreditPlan", "CreditPlan", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-danger" })
+    </p>
+</li>
+<li>
+    <p class="navbar-btn">
+        @Html.ActionLink("Send to archive", "SendToArchiveCreditPlan", "CreditPlan", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+    </p>
+</li>
+
+<li>
+    <p class="navbar-btn">
+        @Html.ActionLink("Edit", "EditCreditPlan", "CreditPlan", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+    </p>
+</li>
+
+<li>
+    <p class="navbar-btn">
+        @Html.ActionLink("SendRequest", "SendRequest", "CreditPlan", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+    </p>
+</li>
+

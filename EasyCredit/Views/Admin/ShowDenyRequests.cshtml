@@ -1,0 +1,44 @@
+﻿
+@model IEnumerable<EasyCredit.Models.Request>
+
+@{
+    ViewBag.Title = "ShowDenyRequests";
+}
+
+<h2>ShowDenyRequests</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDateOfRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditPlan.NameOfPlan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditPlan.LimitDays)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDateOfRequest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.CreditPlan.NameOfPlan)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.CreditPlan.LimitDays)
+            </th>
+        </tr>
+    }
+
+</table>

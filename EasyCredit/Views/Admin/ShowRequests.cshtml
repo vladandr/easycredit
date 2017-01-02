@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EasyCredit.Models.Request>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDateOfRequest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditPlan.NameOfPlan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreditPlan.LimitDays)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDateOfRequest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.CreditPlan.NameOfPlan)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.CreditPlan.LimitDays)
+        </th>
+        <td>
+            @Html.ActionLink("Accept", "AcceptRequest", "Admin", new { id=item.Id }, htmlAttributes : null) |
+            @Html.ActionLink("Deny", "DenyRequest", "Admin", new { id=item.Id }, htmlAttributes : null) 
+        </td>
+    </tr>
+}
+
+</table>
