@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity;
 
 namespace EasyCredit.Infrastructure
 {
-    internal static class IdentityExtensions
+    public static class IdentityExtensions
     {
         public static Guid GetUserGuidId(this IIdentity identity)
         {

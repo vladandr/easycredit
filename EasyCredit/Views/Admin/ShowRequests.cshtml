@@ -6,7 +6,13 @@
             @Html.DisplayNameFor(model => model.StartDateOfRequest)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User.UserName)
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.SecondName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreditPlan.NameOfPlan)
@@ -23,7 +29,13 @@
             @Html.DisplayFor(modelItem => item.StartDateOfRequest)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User.UserName)
+            @Html.DisplayFor(modelItem => item.User.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.SecondName)
         </td>
         <th>
             @Html.DisplayFor(modelItem => item.CreditPlan.NameOfPlan)

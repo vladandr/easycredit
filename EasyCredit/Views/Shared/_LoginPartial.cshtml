@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
+@using EasyCredit.Infrastructure;
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -7,25 +9,47 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
+            @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+            {
             <p class="navbar-btn">
                 @Html.ActionLink("Create", "CreatePlan", "CreditPlan", routeValues: null, htmlAttributes: new { @class = "btn btn-warning" })
             </p>
+            }
         </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello @User.Identity.GetUserName()<span class="caret"></span></a>
-            <ul class="dropdown-menu">                
+            <ul class="dropdown-menu">   
+                @if (User.IsInRole("Admin"))
+                {
                 <li>
                     @Html.ActionLink("User Administration", "Index", "Admin", routeValues: null, htmlAttributes: null)
-                </li>                
+                </li> 
+                }
+                <li>
+                    @Html.ActionLink("My Profile", "Index", "ClientProfile", new { id = User.Identity.GetUserGuidId()}, htmlAttributes: null)
+                </li> 
+                <li>
+                    @Html.ActionLink("Edit Profile", "EditUser", "ClientProfile", new { id = User.Identity.GetUserGuidId() }, htmlAttributes: null)
+                </li>      
+                @if (!User.IsInRole("Admin") && !User.IsInRole("Moderator"))
+                {
+                <li>
+                    @Html.ActionLink("My Requests", "ShowRequests", "ClientProfile", new { userId = User.Identity.GetUserGuidId() }, htmlAttributes: null)
+                </li> 
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                {
                 <li>
                     @Html.ActionLink("Show new Requests", "ShowNewRequests", "Admin", routeValues: null, htmlAttributes: null)
                 </li>
+
                 <li>
                     @Html.ActionLink("Show denied Requests", "ShowDenyRequests", "Admin", routeValues: null, htmlAttributes: null)
                 </li>
                 <li>
                     @Html.ActionLink("Show accepted Requests", "ShowAcceptedRequests", "Admin", routeValues: null, htmlAttributes: null)
                 </li>
+                }
                 <li>
                     @Html.ActionLink("Settings", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                 </li>

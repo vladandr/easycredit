@@ -51,7 +51,7 @@ namespace EasyCredit.Controllers
                                         : "";
 
             Guid userId = User.Identity.GetUserGuidId();
-             var roles = UserManager.GetRoles(userId);
+            var roles = UserManager.GetRoles(userId);
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),

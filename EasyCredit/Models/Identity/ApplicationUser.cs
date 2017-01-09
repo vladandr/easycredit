@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EasyCredit.Models.Identity
 {
@@ -27,6 +28,18 @@ namespace EasyCredit.Models.Identity
         #endregion
        
         public Gender? Gender { get; set; }
+
+        [Display(Name = "First name")]
+        public string FirstName { get; set; }
+
+        public string Surname { get; set; }
+
+        [Display(Name = "Second name")]
+        public string SecondName { get; set; }
+        public uint Age { get; set; }
+
+        [Display(Name = "Amount of children")]
+        public uint AmountOfChildren { get; set; }
 
         public virtual ICollection<Request> Requests { get; set; }
 

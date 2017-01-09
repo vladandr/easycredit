@@ -209,11 +209,7 @@
     <Compile Include="DbMappings\Identity\ApplicationRoleMap.cs" />
     <Compile Include="DbMappings\Identity\ApplicationUserMap.cs" />
     <Compile Include="Infrastructure\RequestProvider.cs" />
-    <Compile Include="Migrations\201612240749571_InitialCreate.cs" />
-    <Compile Include="Migrations\201612240749571_InitialCreate.Designer.cs">
-      <DependentUpon>201612240749571_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Infrastructure\UserProvider.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Contexts\ApplicationDbContext.cs" />
     <Compile Include="Models\BankAccount.cs" />
@@ -330,10 +326,13 @@
     <Content Include="Views\Admin\ShowNewRequests.cshtml" />
     <Content Include="Views\Admin\ShowDenyRequests.cshtml" />
     <Content Include="Views\Admin\ShowAcceptedRequests.cshtml" />
+    <Content Include="Views\ClientProfile\ShowRequests.cshtml" />
+    <Content Include="Views\ClientProfile\EditUser.cshtml" />
+    <Content Include="Views\ClientProfile\Index.cshtml" />
+    <Content Include="Views\CreditPlan\ShowHistoryCreditPlans.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ClientProfile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -342,9 +341,6 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612240749571_InitialCreate.resx">
-      <DependentUpon>201612240749571_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>

@@ -2,6 +2,7 @@
 using EasyCredit.Models;
 using EasyCredit.UnitOfWork;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace EasyCredit.Controllers
@@ -24,6 +25,7 @@ namespace EasyCredit.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet]
         public ActionResult EditCreditPlan(Guid id)
         {
@@ -31,6 +33,7 @@ namespace EasyCredit.Controllers
             return View(plan);
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         public ActionResult EditCreditPlan(CreditPlan plan)
         {
@@ -38,12 +41,14 @@ namespace EasyCredit.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpGet]
         public ActionResult CreatePlan()
         {
             return View();
-        }        
+        }
 
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         public ActionResult CreatePlan(CreditPlan plan)        
         {
@@ -58,18 +63,21 @@ namespace EasyCredit.Controllers
             return View(plan);
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult DeleteCreditPlan(Guid id)
         {
             creditPlanProvider.DeleteCreditPlan(id);
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult SendToArchiveCreditPlan(Guid id)
         {
             creditPlanProvider.SendToArchiveCreditPlan(id);
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         public ActionResult SendRequest(Guid id)
         {
             var userId = User.Identity.GetUserGuidId();
@@ -77,11 +85,14 @@ namespace EasyCredit.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
-        public ActionResult ShowRecentlyCreatedCreditPlans()
+        [HttpGet]
+        public ActionResult ShowHistoryCreditPlans()
         {
-            var plansToShow = creditPlanProvider.ShowRecentlyCreatedCreditPlans();
-            return Json(plansToShow);
+            var plansToShow = unitOfWork.CreditPlansRepository.
+                GetAll().ToList().
+                Where(x=>x.Status == Constants.CreditPlanStatusDictionary.InHistory).
+                Take(5);
+            return PartialView(plansToShow);
         }
     }
 }

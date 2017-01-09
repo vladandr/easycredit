@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MinValueToCredit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MinValueToCredit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MinValueToCredit, new { htmlAttributes = new { @class = "form-control", min = "0", max = "9999999999" } })
                 @Html.ValidationMessageFor(model => model.MinValueToCredit, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MaxValueToCredit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MaxValueToCredit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MaxValueToCredit, new { htmlAttributes = new { @class = "form-control", min = "0", max = "9999999999" } })
                 @Html.ValidationMessageFor(model => model.MaxValueToCredit, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -53,14 +53,14 @@
             @Html.LabelFor(model => model.LimitDays, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.LimitDays, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LimitDays, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.LimitDays, "", new { @class = "text-danger", min = "0", max = "9999999999" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Surcharge, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Surcharge, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Surcharge, new { htmlAttributes = new { @class = "form-control", min = "0", max = "9999999999" } })
                 @Html.ValidationMessageFor(model => model.Surcharge, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Percentage, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Percentage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Percentage, new { htmlAttributes = new { @class = "form-control", min = "0", max = "9999999999" } })
                 @Html.ValidationMessageFor(model => model.Percentage, "", new { @class = "text-danger" })
             </div>
         </div>

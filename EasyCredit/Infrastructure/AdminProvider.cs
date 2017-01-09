@@ -1,7 +1,9 @@
-﻿using EasyCredit.UnitOfWork;
+﻿using EasyCredit.Models.Identity;
+using EasyCredit.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace EasyCredit.Infrastructure
@@ -9,25 +11,34 @@ namespace EasyCredit.Infrastructure
     public class AdminProvider
     {
         private EasyCreditUnitOfWork unitOfWork;
-        private const string passord = "1qaz@WSX";
+        private const string password = "1qaz@WSX";
         public AdminProvider(EasyCreditUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
 
-        public void Bun(Guid id)
+        public void Ban(Guid id)
         {
-            var userToBan = unitOfWork.ApplicationUserRepositiry.Get(id);
-            userToBan.LockoutEndDateUtc = DateTime.Now.AddMonths(1);
-            unitOfWork.ApplicationUserRepositiry.InsertOrUpdate(userToBan);
+            var user = unitOfWork.ApplicationUserRepositiry.Get(id);
+            user.LockoutEndDateUtc = DateTime.Now.AddYears(1);
+            unitOfWork.ApplicationUserRepositiry.InsertOrUpdate(user);
             unitOfWork.Commit();
         }
 
-        public void UnBun(Guid id)
+        public void Unban(Guid id)
         {
-            var userToUnBan = unitOfWork.ApplicationUserRepositiry.Get(id);
-            userToUnBan.LockoutEndDateUtc = null;
-            unitOfWork.ApplicationUserRepositiry.InsertOrUpdate(userToUnBan);
+            var user = unitOfWork.ApplicationUserRepositiry.Get(id);
+            user.LockoutEndDateUtc = null;
+            unitOfWork.ApplicationUserRepositiry.InsertOrUpdate(user);
+            unitOfWork.Commit();
+        }
+
+        public void ResetToDefaultPassword(Guid id)
+        {
+            var userManager = new ApplicationUserManager(new ApplicationUserStore(new Contexts.ApplicationDbContext()));
+            var user = unitOfWork.ApplicationUserRepositiry.Get(id);
+            user.PasswordHash = userManager.PasswordHasher.HashPassword(password);
+            unitOfWork.ApplicationUserRepositiry.InsertOrUpdate(user);
             unitOfWork.Commit();
         }
     }

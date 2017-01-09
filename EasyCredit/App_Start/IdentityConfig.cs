@@ -32,6 +32,11 @@ namespace EasyCredit
     // UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser, Guid>
     {
+        public ApplicationUserManager(IUserStore<ApplicationUser, Guid> store)
+           : base(store)
+        {
+        }
+
         public ApplicationUserManager(IUserStore<ApplicationUser, Guid> store, 
             IdentityFactoryOptions<ApplicationUserManager> options)
             : base(store)
@@ -55,7 +60,7 @@ namespace EasyCredit
 
             // Configure user lockout defaults
             UserLockoutEnabledByDefault = true;
-            DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(15);
             MaxFailedAccessAttemptsBeforeLockout = 5;
 
             // Register two factor authentication providers. This application uses Emails as a 

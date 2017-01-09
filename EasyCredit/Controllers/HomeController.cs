@@ -21,7 +21,7 @@ namespace EasyCredit.Controllers
         }
         public ActionResult Index()
         {
-            var model = unitOfWork.CreditPlansRepository.GetAll().Where(x => x.Status != CreditPlanStatusDictionary.InHistory).ToList();
+            var model = unitOfWork.CreditPlansRepository.GetAll().ToList();
             return View(model);
         }
 
