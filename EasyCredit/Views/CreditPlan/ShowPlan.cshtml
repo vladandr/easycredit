@@ -88,7 +88,7 @@
               }
 </p>
 
-@if (Request.IsAuthenticated)
+@if (Request.IsAuthenticated&&Model.Status!=EasyCredit.Constants.CreditPlanStatusDictionary.InHistory)
 {
     <p class="navbar-btn">
         @Html.ActionLink("SendRequest", "SendRequest", "CreditPlan", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-success" })
