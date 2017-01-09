@@ -27,7 +27,9 @@
                             <td class="col-xs-2 cap">@user.FirstName </td>
                             <td class="col-xs-2 cap">@user.Surname </td>
                             <td class="col-xs-2 cap">@user.SecondName </td>
-                            <td class="col-xs-2 cap">@user.Email</td>
+                            <td class="col-xs-2 cap">
+                                <a href="/ClientProfile/Index/@user.Id">@user.Email</a>
+                            </td>
                            
                             @if (@user.LockoutEndDateUtc != null)
                             {

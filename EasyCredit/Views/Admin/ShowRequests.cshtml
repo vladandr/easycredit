@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.User.SecondName)
         </td>
         <th>
-            @Html.DisplayFor(modelItem => item.CreditPlan.NameOfPlan)
+            <a href="/CreditPlan/ShowPlan/@item.CreditPlan.Id">@item.CreditPlan.NameOfPlan</a>
         </th>
         <th>
             @Html.DisplayFor(modelItem => item.CreditPlan.LimitDays)
