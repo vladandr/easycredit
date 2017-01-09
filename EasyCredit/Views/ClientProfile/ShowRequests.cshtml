@@ -32,7 +32,7 @@
                 @Html.DisplayFor(modelItem => item.StatusOfRequest)
             </td>
             <th>
-                @Html.DisplayFor(modelItem => item.CreditPlan.NameOfPlan)
+                <a href="/CreditPlan/ShowPlan/@item.CreditPlan.Id">@item.CreditPlan.NameOfPlan</a>
             </th>
             <th>
                 @Html.DisplayFor(modelItem => item.CreditPlan.LimitDays)
