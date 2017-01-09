@@ -17,8 +17,8 @@
         if (@plan.Status != EasyCredit.Constants.CreditPlanStatusDictionary.InHistory)
         {
         <div class="row">
-            <div class="col-md-4">
-                <h2>@plan.NameOfPlan</h2>
+            <div>
+                <h2 style="display:block; text-overflow:ellipsis; overflow:hidden">@plan.NameOfPlan</h2>
                 <p>@plan.Description</p>
                 <p>@Html.ActionLink("View more >>", "ShowPlan", "CreditPlan", new { id = plan.Id }, htmlAttributes: new { @class = "btn btn-default" })</p>
             </div>
@@ -35,7 +35,7 @@
             if (@plan.Status != EasyCredit.Constants.CreditPlanStatusDictionary.ActivePlan)
             {
                 <div class="row">
-                    <div class="col-md-4">
+                    <div>
                         <h2>@plan.NameOfPlan</h2>
                         <p>@plan.Description</p>
                         <p>@Html.ActionLink("View more >>", "ShowPlan", "CreditPlan", new { id = plan.Id }, htmlAttributes: new { @class = "btn btn-default" })</p>
