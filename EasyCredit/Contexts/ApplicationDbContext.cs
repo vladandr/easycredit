@@ -72,7 +72,7 @@ namespace EasyCredit.Contexts
                 {
                     Email = "admin@admin.com",
                     UserName = "admin@admin.com",
-                    LockoutEnabled = true,
+                    LockoutEnabled = false,
                 };
                 string adminPassword = "1qaz@WSXa";
                 var result = userManager.Create(admin, adminPassword);

@@ -19,7 +19,7 @@ namespace EasyCredit.Infrastructure
 
         public void Ban(Guid id)
         {
-            var user = unitOfWork.ApplicationUserRepositiry.Get(id);
+            var user = unitOfWork.ApplicationUserRepositiry.Get(id);            
             user.LockoutEndDateUtc = DateTime.Now.AddYears(1);
             unitOfWork.ApplicationUserRepositiry.InsertOrUpdate(user);
             unitOfWork.Commit();
